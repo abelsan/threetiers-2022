@@ -2,6 +2,7 @@
 # uninstall the following
 # -----------------------------------
 # pip3 uninstall mysql-connector
+# pip3 install mysql-connector-python
 # -----------------------------------
 # Then install
 # -----------------------------------
@@ -16,7 +17,13 @@ cnx = mysql.connector.connect(user='root',
     database='education',
     auth_plugin='mysql_native_password')
 
-# ----------------------------------- 
-#           YOUR CODE
-# ----------------------------------- 
+cursor = cnx.cursor()
+query = ("SELECT * FROM Colleges")
+cursor.execute(query)
 
+# print all the first cell of all the rows
+for row in cursor.fetchall():
+    print(row)
+
+cursor.close()
+cnx.close()

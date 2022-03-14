@@ -1,7 +1,14 @@
 # import package flask
 from flask import Flask
 
-# ----------------------------------- 
-#           YOUR CODE
-# ----------------------------------- 
+# create application instance
+app = Flask(__name__)
 
+# root route - landing page
+@app.route('/')
+def hello_world():
+    return 'Hello, people!'
+
+# start server - note the port is 3000
+if __name__ == '__main__':
+    app.run(debug=True, port=3000)
